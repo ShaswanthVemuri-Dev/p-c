@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .chart-container {
+            width: 30%;
+            max-width: 400px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        canvas {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="chart-container">
+        <canvas id="employmentChart"></canvas>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById('employmentChart').getContext('2d');
+
+            const data = {
+                labels: [
+                    'Government Jobs (15,477 - 6.0%)',
+                    'Private Sector & Others (87,704 - 33.8%)',
+                    'Agricultural Labor (19,044 - 7.4%)',
+                    'Other Unskilled Work (8,162 - 3.1%)',
+                    'MSME Workers (26,077 - 10.1%)',
+                    'Non-Workers (128,713 - 49.7%)'
+                ],
+                datasets: [{
+                    label: 'Employment Distribution',
+                    data: [6.0, 33.8, 7.4, 3.1, 10.1, 49.7],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 205, 86, 0.7)',
+                        'rgba(255, 99, 132, 0.7)',
+                        'rgba(153, 102, 255, 0.7)',
+                        'rgba(201, 203, 207, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 205, 86, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(201, 203, 207, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            const config = {
+                type: 'pie',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.raw;
+                                    const label = context.label;
+                                    return `${label}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            try {
+                new Chart(ctx, config);
+            } catch (error) {
+                console.error("Error creating the chart:", error);
+                alert("An error occurred while rendering the chart. Check the console for details.");
+            }
+        });
+    </script>
+</body>
+</html>
