@@ -16,13 +16,15 @@
             box-sizing: border-box;
         }
 
+        canvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: auto;
+        }
+
         .chart-container {
-            width: 70%;
-            max-width: 600px;
-            aspect-ratio: 1 / 1;
-            background: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
+            width: 100%;
             padding: 20px;
             display: flex;
             justify-content: center;
@@ -30,21 +32,14 @@
             box-sizing: border-box;
         }
 
-        canvas {
-            width: 100% !important;
-            height: 100% !important;
-        }
-
         @media screen and (max-width: 768px) {
             .chart-container {
-                width: 90%;
                 padding: 15px;
             }
         }
 
         @media screen and (max-width: 480px) {
             .chart-container {
-                width: 100%;
                 padding: 10px;
             }
         }
@@ -125,4 +120,3 @@
     </script>
 </body>
 </html>
-
