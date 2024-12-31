@@ -11,14 +11,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             box-sizing: border-box;
         }
 
         .chart-container {
-            width: 50%;
+            width: 70%;
             max-width: 600px;
+            aspect-ratio: 1 / 1;
             background: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
@@ -30,20 +31,20 @@
         }
 
         canvas {
-            width: 100%;
-            height: auto;
+            width: 100% !important;
+            height: 100% !important;
         }
 
         @media screen and (max-width: 768px) {
             .chart-container {
-                width: 80%;
+                width: 90%;
                 padding: 15px;
             }
         }
 
         @media screen and (max-width: 480px) {
             .chart-container {
-                width: 95%;
+                width: 100%;
                 padding: 10px;
             }
         }
@@ -96,7 +97,7 @@
                 data: data,
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false,
+                    maintainAspectRatio: true,
                     plugins: {
                         legend: {
                             position: 'top',
@@ -124,3 +125,4 @@
     </script>
 </body>
 </html>
+
