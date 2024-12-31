@@ -16,15 +16,20 @@
             box-sizing: border-box;
         }
 
-        canvas {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            margin: auto;
+        .container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         .chart-container {
-            width: 100%;
+            flex: 1;
+            max-width: 500px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
             padding: 20px;
             display: flex;
             justify-content: center;
@@ -32,23 +37,64 @@
             box-sizing: border-box;
         }
 
-        @media screen and (max-width: 768px) {
-            .chart-container {
-                padding: 15px;
-            }
+        .labels-container {
+            flex: 1;
+            max-width: 300px;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        @media screen and (max-width: 480px) {
-            .chart-container {
-                padding: 10px;
+        .labels-container ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .labels-container li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .chart-container, .labels-container {
+                max-width: 90%;
             }
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="chart-container">
-        <canvas id="employmentChart"></canvas>
+    <div class="container">
+        <div class="chart-container">
+            <canvas id="employmentChart"></canvas>
+        </div>
+        <div class="labels-container">
+            <ul>
+                <li><strong>Government Jobs:</strong> 15,477 (6.0%)</li>
+                <li><strong>Private Sector & Others:</strong> 87,704 (33.8%)</li>
+                <li><strong>Agricultural Labor:</strong> 19,044 (7.4%)</li>
+                <li><strong>Other Unskilled Work:</strong> 8,162 (3.1%)</li>
+                <li><strong>MSME Workers:</strong> 26,077 (10.1%)</li>
+                <li><strong>Non-Workers:</strong> 128,713 (49.7%)</li>
+            </ul>
+        </div>
     </div>
 
     <script>
@@ -95,7 +141,7 @@
                     maintainAspectRatio: true,
                     plugins: {
                         legend: {
-                            position: 'top',
+                            display: false,
                         },
                         tooltip: {
                             callbacks: {
