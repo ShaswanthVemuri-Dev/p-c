@@ -13,20 +13,39 @@
             align-items: center;
             height: 100vh;
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            box-sizing: border-box;
         }
 
         .chart-container {
-            width: 30%;
-            max-width: 400px;
+            width: 50%;
+            max-width: 600px;
             background: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 15px;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
         }
 
         canvas {
             width: 100%;
             height: auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            .chart-container {
+                width: 80%;
+                padding: 15px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .chart-container {
+                width: 95%;
+                padding: 10px;
+            }
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -77,6 +96,7 @@
                 data: data,
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     plugins: {
                         legend: {
                             position: 'top',
