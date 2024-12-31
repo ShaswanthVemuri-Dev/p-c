@@ -18,10 +18,12 @@
 
         .container {
             display: flex;
+            flex-direction: row;
             gap: 20px;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             flex-wrap: wrap;
+            max-width: 1200px;
         }
 
         .chart-container {
@@ -45,9 +47,6 @@
             border-radius: 12px;
             padding: 20px;
             box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .labels-container ul {
